@@ -1,0 +1,2 @@
+该文件的输出结果用于对两帧直接差分法的对比验证,运行完会输出在同目录下的“result_XXX”。可以通过修改文件中的“SPEED_OBJ1、OBJ1_INIT_Z、MOD_FREQ、EXPOSURE、GAP_T”等参数来修改物体运动速度、物体初始距离、调制频率、曝光时间、帧间隔等参数。运行文件后，对应的输出结果文件夹中的“depth_map_run1_w512x512_f100MHz_T8.0ms_NT100_spp64_v16.50_v20.00.npy”和“depth_map_run2_w512x512_f100MHz_T8.0ms_NT100_spp64_v16.50_v20.00.npy”，是当前速度下的连续两帧深度结果。修改速度参数后，把npy文件直接放入“Noise Model Addition and Verification”文件夹中的“8-22”文件夹内即可，运行Frame_Diff.m可以得到加了文中描述的噪声后的速度解算结果，结果会输出到“8-22”文件夹内的“sim_output”文件夹中。
+

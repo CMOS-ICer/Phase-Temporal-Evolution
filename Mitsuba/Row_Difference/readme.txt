@@ -1,0 +1,2 @@
+所有的_d结尾的py文件为Fig.7(a)的输出来源，所有的_v结尾的py文件为Fig.7(b)的输出来源。所有文件直接可运行。文件名的“cube、sphere、double”分别对应着文中的mitsuba实验部分的三个场景，也就是Fig.7,运行完会输出在同目录下的“result_XXX_x”。可以通过修改文件中的“SPEED_OBJ1、OBJ1_INIT_Z、MOD_FREQ、EXPOSURE_ODD、EXPOSURE_EVEN”等参数来修改物体运动速度（除了“double”场景外，SPEED_OBJ2无意义）、物体初始距离、调制频率、奇数行曝光时间、偶数行曝光时间等参数。运行_v结尾的文件，对应的输出结果文件夹中的“depth_combined_rows_odd8ms_even80ms.npy”，是当前速度下，包含奇数行、偶数行不同深度信息的文件。把文件名修改为对应速度值，放入“Noise Model Addition and Verification”文件夹中的“8-80”文件夹内即可，运行Row_Diff.m可以得到加了文中描述的噪声后的速度解算结果，结果会输出到“8-80”文件夹内的“sim_output”文件夹中。
+
