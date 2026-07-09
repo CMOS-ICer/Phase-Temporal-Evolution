@@ -13,10 +13,10 @@ def output_allowed_path(path):
 VARIANT = 'cuda_ad_rgb'
 OUT_DIR = 'result_sphere_d'
 IMG_W, IMG_H = (512, 512)
-SPP = 64
+SPP = 100
 MOD_FREQ = 100000000.0
 EXPOSURE = 0.005
-NT = 10
+NT = 100
 OBJ1_INIT_Z = 0.8
 OBJ2_INIT_Z = 0.8
 SPEED_OBJ1 = 3.0
@@ -387,7 +387,7 @@ def main():
     save_rgb_npy_png(rgb_comb, os.path.join(OUT_DIR, f'rgb_combined_{combined_tag}'), title=f'Combined RGB (odd/even rows) - {combined_tag}')
     denom = (EXPOSURE_EVEN - EXPOSURE_ODD) / 2.0
     if abs(denom) < 1e-12:
-        raise ValueError('EXPOSURE_EVEN 与 EXPOSURE_ODD 过于接近或相等，导致分母接近零，无法计算速度。请调整行曝光时间。')
+        raise ValueError('EXPOSURE_EVEN approx EXPOSURE_ODD ')
     vmap = np.full((H - 1, W), np.nan, dtype=np.float32)
     for i in range(0, H - 1):
         row_i_is_odd = (i + 1) % 2 == 1
