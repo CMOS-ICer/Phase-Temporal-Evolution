@@ -79,7 +79,7 @@ def save_image_no_cbar_exact_pixels(array: np.ndarray, basepath: str, vmin: floa
     if img.ndim != 2:
         img = np.squeeze(img)
     H, W = img.shape
-    assert W == IMG_W and H == IMG_H, f'期待尺寸 {IMG_W}x{IMG_H}，但得到 {W}x{H}'
+    assert W == IMG_W and H == IMG_H, f'W {IMG_W}x{IMG_H}，H {W}x{H}'
     cmap = cm.get_cmap(cmap_name)
     finite_mask = np.isfinite(img)
     if vmin is None or vmax is None:
