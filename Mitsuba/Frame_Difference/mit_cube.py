@@ -1,19 +1,3 @@
-                                   
-                                                                           
-                                        
-                                              
-                                                    
-                                       
-                                                                
-                                                                                       
-                                    
-                                 
-                                                    
-                                             
-                                                       
-                                                                              
-
-                                                
 import mitsuba as mi                                                       
 import drjit as dr                                                           
 import numpy as np                                     
@@ -25,7 +9,7 @@ from math import tan, radians, sqrt
 VARIANT = "cuda_ad_rgb"                                                 
 OUT_DIR = "result_cube"                                         
 IMG_W, IMG_H = 512, 512                              
-SPP = 64                                                       
+SPP = 100                                                       
 MOD_FREQ = 100e6                                        
 EXPOSURE = 8e-3                                            
 NT = 100                                                    
@@ -43,9 +27,7 @@ CAM_UP = [0.0, 1.0, 0.0]
 CAM_FOV = 80.0                                  
 LUMA_WEIGHTS = np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)                
 C = 3.0e8                                         
-GAP_T = 22e-3                                                                                               
-
-                                                                   
+GAP_T = 22e-3                                                                                                                                                             
 mi.set_variant(VARIANT)                                         
 
                                                         
@@ -65,8 +47,7 @@ def clear_dir_contents(path: str):
             except Exception as e:
                 pass
 
-
-                                                                           
+                                                                          
 def make_scene(cube_z: float, sphere_z: float) -> mi.Scene:                                 
     sphere_radius = SPHERE_DIAM / 2.0                                        
                                             
@@ -107,8 +88,6 @@ def make_scene(cube_z: float, sphere_z: float) -> mi.Scene:
             "radiance": {"type": "rgb", "value": [0.1, 0.1, 0.1]}                
         },                                                           
 
-
-
                                                  
         "cube": {                                                 
             "type": "cube",                                     
@@ -138,7 +117,6 @@ def render_gray(scene: mi.Scene, spp: int=SPP) -> np.ndarray:
         gray = np.squeeze(rgb).astype(np.float32)                      
     gray = np.nan_to_num(gray, nan=0.0, posinf=0.0, neginf=0.0)              
     return gray                                                   
-
                                                                      
 def world_point_to_pixel(x: float, y: float, z: float,
                          img_w: int=IMG_W, img_h: int=IMG_H,
@@ -367,9 +345,7 @@ import matplotlib.cm as cm
 from matplotlib.colors import Normalize
 import matplotlib.image as mimage
 
-            
-
-                                     
+                                    
 import matplotlib.cm as cm
 from matplotlib.colors import Normalize
 import matplotlib.image as mimage
@@ -381,7 +357,7 @@ def save_image_no_cbar_exact_pixels(array: np.ndarray, basepath: str,
     if img.ndim != 2:
         img = np.squeeze(img)
     H, W = img.shape
-    assert W == IMG_W and H == IMG_H, f"期待尺寸 {IMG_W}x{IMG_H}，但得到 {W}x{H}"
+    assert W == IMG_W and H == IMG_H, f"W {IMG_W}x{IMG_H}，H {W}x{H}"
 
     cmap = cm.get_cmap(cmap_name)
     finite_mask = np.isfinite(img)
@@ -416,14 +392,7 @@ def save_image_no_cbar_exact_pixels(array: np.ndarray, basepath: str,
     mapped_u8 = (np.clip(mapped, 0.0, 1.0) * 255).astype(np.uint8)
     mimage.imsave(basepath + ".png", mapped_u8, format='png')
 
-
-                                                                
-                                                                       
-                                                            
-                                                                         
-                                     
-
-                                                                     
+                                                                    
 def save_run_outputs(run: dict):
     tag = run["tag"]
     depth = run["depth_map"]
