@@ -8,13 +8,13 @@ from math import tan, radians, sqrt
 VARIANT = 'cuda_ad_rgb'
 OUT_DIR = 'result_sphere_v'
 IMG_W, IMG_H = (512, 512)
-SPP = 64
+SPP = 100
 MOD_FREQ = 100000000.0
 EXPOSURE = 0.005
 EXPOSURE_ODD = 0.008
 EXPOSURE_EVEN = 0.08
 EXPOSURE = EXPOSURE_ODD
-NT = 10
+NT = 100
 OBJ1_INIT_Z = 0.8
 OBJ2_INIT_Z = 0.8
 SPEED_OBJ1 = 3
@@ -80,7 +80,7 @@ def save_image_no_cbar_exact_pixels(array: np.ndarray, basepath: str, vmin: floa
     if img.ndim != 2:
         img = np.squeeze(img)
     H, W = img.shape
-    assert W == IMG_W and H == IMG_H, f'期待尺寸 {IMG_W}x{IMG_H}，但得到 {W}x{H}'
+    assert W == IMG_W and H == IMG_H, f'W {IMG_W}x{IMG_H}，H {W}x{H}'
     cmap = cm.get_cmap(cmap_name)
     finite_mask = np.isfinite(img)
     if vmin is None or vmax is None:
