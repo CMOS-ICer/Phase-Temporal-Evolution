@@ -13,10 +13,10 @@ def output_allowed_path(path):
 VARIANT = 'cuda_ad_rgb'
 OUT_DIR = 'result_cube_d'
 IMG_W, IMG_H = (512, 512)
-SPP = 64
+SPP = 100
 MOD_FREQ = 100000000.0
 EXPOSURE = 0.005
-NT = 10
+NT = 100
 OBJ1_INIT_Z = 0.9
 OBJ2_INIT_Z = 0.9
 SPEED_OBJ1 = 3
