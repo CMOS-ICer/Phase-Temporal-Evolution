@@ -358,7 +358,7 @@ def main():
     save_run_outputs(run_even)
     depth_odd = run_odd['depth_map']
     depth_even = run_even['depth_map']
-    assert depth_odd.shape == (IMG_H, IMG_W) and depth_even.shape == (IMG_H, IMG_W), '深度图尺寸不一致或与设置不符'
+    assert depth_odd.shape == (IMG_H, IMG_W) and depth_even.shape == (IMG_H, IMG_W), ''
     combined_depth = np.full((IMG_H, IMG_W), np.nan, dtype=np.float32)
     combined_depth[0:IMG_H:2, :] = depth_odd[0:IMG_H:2, :]
     combined_depth[1:IMG_H:2, :] = depth_even[1:IMG_H:2, :]
